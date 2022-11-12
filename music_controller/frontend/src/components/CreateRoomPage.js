@@ -11,8 +11,9 @@ import {
   RadioGroup,
 } from "@material-ui/core";
 import { Form, Link } from "react-router-dom";
+import { withRouter } from "./withRouter";
 
-export default class CreateRoomPage extends Component {
+class CreateRoomPage extends Component {
   defaultVotes = 2;
 
   constructor(props) {
@@ -21,10 +22,9 @@ export default class CreateRoomPage extends Component {
       guestCanPause: true,
       votesToSkip: this.defaultVotes,
     };
-
     this.handleRoomButtonPressed = this.handleRoomButtonPressed.bind(this);
-    this.handleVotesChange = this.handleVotesChange.bind(this);
     this.handleGuestCanPauseChange = this.handleGuestCanPauseChange.bind(this);
+    this.handleVotesChange = this.handleVotesChange.bind(this);
   }
 
   handleVotesChange(e) {
@@ -32,13 +32,11 @@ export default class CreateRoomPage extends Component {
       votesToSkip: e.target.value,
     });
   }
-
   handleGuestCanPauseChange(e) {
     this.setState({
       guestCanPause: e.target.value === "true" ? true : false,
     });
   }
-
   handleRoomButtonPressed() {
     const requestOptions = {
       method: "POST",
@@ -48,10 +46,9 @@ export default class CreateRoomPage extends Component {
         guest_can_pause: this.state.guestCanPause,
       }),
     };
-
-    fetch("/api/create-room", requestOptions).then((response) =>
-      response.json()
-    ).then((data) => console.log(data));
+    fetch("/api/create-room", requestOptions)
+      .then((response) => response.json())
+      .then((data) => this.props.navigate("/room/" + data.code));
   }
 
   render() {
@@ -92,15 +89,12 @@ export default class CreateRoomPage extends Component {
             <TextField
               required={true}
               type="number"
-              onChange={this.handleVotesChange}
               defaultValue={this.defaultVotes}
-              inputProps={{
-                min: 1,
-                style: { textAlign: "center" },
-              }}
+              inputProps={{ min: 1, style: { textAlign: "center" } }}
+              onChange={this.handleVotesChange}
             />
             <FormHelperText>
-              <div align="center">Votes Required To Skip Song</div>
+              <div align="center">Votes required to skip song</div>
             </FormHelperText>
           </FormControl>
         </Grid>
@@ -110,7 +104,7 @@ export default class CreateRoomPage extends Component {
             variant="contained"
             onClick={this.handleRoomButtonPressed}
           >
-            Create A Room
+            Create a Room
           </Button>
         </Grid>
         <Grid item xs={12} align="center">
@@ -122,3 +116,5 @@ export default class CreateRoomPage extends Component {
     );
   }
 }
+
+export default withRouter(CreateRoomPage);
