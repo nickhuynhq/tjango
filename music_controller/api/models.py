@@ -1,3 +1,22 @@
 from django.db import models
+import string
+import random
+
+def generate_unique_code():
+    length = 6
+
+    while True:
+        # generate a random code using ASCII uppercase with the length (k) of length
+        code = ''.join(random,choices(string.ascii_uppercase, k=length))
+        # filter through all codes in Room to see if there are any matching
+        if Room.objects.filter(code=code).count() == 0:
+            break
+    return code
 
 # Create your models here.
+class Room(models.Model):
+    code = models.CharField(max_length=8, default="", unique=True)
+    host = models.CharField(max_length=50, unique=True)
+    guest_can_pause = models.BooleanField(null=False, default=False)
+    votes_to_skip = models.IntegerField(null=False, default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
