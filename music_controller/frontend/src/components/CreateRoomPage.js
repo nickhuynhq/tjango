@@ -48,7 +48,7 @@ class CreateRoomPage extends Component {
     };
     fetch("/api/create-room", requestOptions)
       .then((response) => response.json())
-      .then((data) => this.props.navigate("/room/" + data.code));
+      .then((data) => this.props.navigate(`/room/${data.code}`));
   }
 
   render() {
