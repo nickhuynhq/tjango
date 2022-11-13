@@ -6,4 +6,4 @@ environ.Env.read_env()
 
 CLIENT_ID = env("CLIENT_ID")
 CLIENT_SECRET = env("CLIENT_SECRET")
-REDIRECT_URI = env("REDIRECT_URI")
+REDIRECT_URI = "http://127.0.0.1:8000/spotify/redirect"
