@@ -7,7 +7,6 @@ UI Elements are created using Material UI.
 ## Project Screenshots
 ![image](https://user-images.githubusercontent.com/71597829/201571815-70b6e1b4-7b52-423b-8f7e-2acc9bcb2158.png)
 ![image](https://user-images.githubusercontent.com/71597829/201572915-b7dcd706-4867-4d48-a5f5-41647be37170.png)
-![image](https://user-images.githubusercontent.com/71597829/201572990-fdbe5fd0-d80b-4527-9b6e-f3f77f0533cc.png)
 
 
 ## Tech Stack
