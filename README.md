@@ -1,6 +1,6 @@
 # Tjango
 
-This is a collaborative music voting and playing app using Django, React, and the Spotify API.
+This is a full stack collaborative music voting and playing app using Django, React, and the Spotify API.
 
 UI Elements are created using Material UI.
 
