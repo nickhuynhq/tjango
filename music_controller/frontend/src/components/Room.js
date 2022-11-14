@@ -133,7 +133,7 @@ const Room = ({ leaveRoomCallback }) => {
   }
 
   return (
-    <Grid container spacing={1} align="center">
+    <Grid container spacing={1} align="center" justify="center">
       <Grid item xs={12}>
         <Typography variant="h4" component="h4">
           Code: {roomCode}
