@@ -10,8 +10,31 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 
-const MusicPlayer = ({ time, duration, title, artist, is_playing, image_url }) => {
+const MusicPlayer = ({
+  time,
+  duration,
+  title,
+  artist,
+  is_playing,
+  image_url,
+}) => {
   const songProgress = (time / duration) * 100;
+
+  const pauseSong = () => {
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch("/spotify/pause", requestOptions);
+  };
+
+  const playSong = () => {
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch("/spotify/play", requestOptions);
+  };
 
   return (
     <Card>
@@ -27,7 +50,11 @@ const MusicPlayer = ({ time, duration, title, artist, is_playing, image_url }) =
             {artist}
           </Typography>
           <div>
-            <IconButton>
+            <IconButton
+              onClick={() => {
+                is_playing ? pauseSong() : playSong();
+              }}
+            >
               {is_playing ? <PauseIcon /> : <PlayArrowIcon />}
             </IconButton>
             <IconButton>
