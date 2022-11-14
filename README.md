@@ -23,7 +23,7 @@ Next run the django web server.
 python manage.py runserver
 ```
 
-If you are on python3:
+If you are on Python 3:
 ```bash
 python3 manage.py runserver
 ```
