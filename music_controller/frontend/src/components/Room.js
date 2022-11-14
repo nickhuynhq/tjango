@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Grid, Button, Typography } from "@material-ui/core";
 import CreateRoomPage from "./CreateRoomPage";
+import MusicPlayer from "./MusicPlayer";
 
 const Room = ({ leaveRoomCallback }) => {
   const [votesToSkip, setVotesToSkip] = useState(2);
@@ -60,7 +61,7 @@ const Room = ({ leaveRoomCallback }) => {
         }
       })
       .then((data) => {
-        setSong({ song: data })
+        setSong(data)
         console.log(data)
       });
       
@@ -138,6 +139,7 @@ const Room = ({ leaveRoomCallback }) => {
           Code: {roomCode}
         </Typography>
       </Grid>
+      <MusicPlayer {...song}/>
       {isHost ? renderSettingsButton() : null}
       <Grid item xs={12}>
         <Button

@@ -10,7 +10,7 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 
-const MusicPlayer = ({ time, duration, title, artist, is_playing }) => {
+const MusicPlayer = ({ time, duration, title, artist, is_playing, image_url }) => {
   const songProgress = (time / duration) * 100;
 
   return (
