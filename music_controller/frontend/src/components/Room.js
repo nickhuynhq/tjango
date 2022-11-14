@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Grid, Button, Typography } from "@material-ui/core";
 import CreateRoomPage from "./CreateRoomPage";
 
-export default function Room({ leaveRoomCallback }) {
+const Room = ({ leaveRoomCallback }) => {
   const [votesToSkip, setVotesToSkip] = useState(2);
   const [guestCanPause, setGuestCanPause] = useState(false);
   const [isHost, setIsHost] = useState(false);
@@ -151,3 +151,5 @@ export default function Room({ leaveRoomCallback }) {
     </Grid>
   );
 }
+
+export default Room
