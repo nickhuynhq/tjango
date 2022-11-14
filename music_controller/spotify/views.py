@@ -66,14 +66,14 @@ class CurrentSong(APIView):
         if room.exists():
             room = room[0]
         else:
-            return Response({'Error': 'No room exists'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({}, status=status.HTTP_404_NOT_FOUND)
         host = room.host
         endpoint = "player/currently-playing"
         response = execute_spotify_api_request(host, endpoint)
 
         if 'error' in response or 'item' not in response:
-            return Response({'Error': "No content playing"}, status=status.HTTP_204_NO_CONTENT)
-        
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
         item = response.get('item')
         duration = item.get('duration_ms')
         progress = response.get('progress_ms')
@@ -82,13 +82,13 @@ class CurrentSong(APIView):
         song_id = item.get('id')
 
         artist_string = ""
-        # Format if song has multiple artists
-        for i, artist in enumerate(item.get('artist')):
+
+        for i, artist in enumerate(item.get('artists')):
             if i > 0:
                 artist_string += ", "
             name = artist.get('name')
             artist_string += name
-        
+
         song = {
             'title': item.get('name'),
             'artist': artist_string,
