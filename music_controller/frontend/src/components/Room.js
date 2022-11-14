@@ -125,7 +125,7 @@ const Room = ({ leaveRoomCallback }) => {
     getRoomDetails();
     getCurrentSong();
 
-    setInterval(getCurrentSong, 5000);
+    setInterval(getCurrentSong, 1000);
   }, []);
 
   if (showSettings) {
