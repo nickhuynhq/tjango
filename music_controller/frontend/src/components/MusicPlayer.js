@@ -17,6 +17,8 @@ const MusicPlayer = ({
   artist,
   is_playing,
   image_url,
+  votes,
+  votes_required,
 }) => {
   const songProgress = (time / duration) * 100;
 
@@ -69,6 +71,9 @@ const MusicPlayer = ({
               <SkipNextIcon />
             </IconButton>
           </div>
+          <Typography color="textSecondary" variant="subtitle1">
+            Votes: {votes} / {votes_required}
+          </Typography>
         </Grid>
       </Grid>
       <LinearProgress variant="determinate" value={songProgress} />
